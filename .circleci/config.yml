@@ -11,7 +11,7 @@ jobs:
     docker:
       - image: wpscanteam/wpscan
     steps:
-      - run: wpscan --url << parameters.url >> --enumerate u
+      - run: wpscan --url << pipeline.parameters.url >> --enumerate u
 
 workflows:
   # Name the workflow "welcome"
