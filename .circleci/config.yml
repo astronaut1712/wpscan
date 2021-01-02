@@ -8,15 +8,11 @@ parameters:
 
 jobs:
   scan:
+    parameters:
+      url:
+        type: string
+        default: ""
     docker:
       - image: wpscanteam/wpscan
     steps:
-      - run: wpscan --url << pipeline.parameters.url >> --enumerate u
-
-workflows:
-  # Name the workflow "welcome"
-  scan:
-    # Run the welcome/run job in its own container
-    when: << pipeline.parameters.url >>
-    jobs:
-      - scan
+      - run: wpscan --url << parameters.url >> --enumerate u
