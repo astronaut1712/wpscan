@@ -16,3 +16,9 @@ jobs:
       - image: wpscanteam/wpscan
     steps:
       - run: wpscan --url << parameters.url >> --enumerate u
+
+workflows:
+  scan:
+    when: << pipeline.parameters.url >>
+    jobs:
+      - scan
